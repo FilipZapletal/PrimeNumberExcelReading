@@ -2,12 +2,16 @@ package PrimeNumber;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
 public class FileRead {
+    private static final Logger logger = LoggerFactory.getLogger(FileRead.class);
+
     public static boolean isPrime(int number){
         if (number <= 1) {
             return false;
@@ -21,7 +25,7 @@ public class FileRead {
     }
 
     public static void main(String[] args) throws IOException {
-        String filePath = "C:\\Users\\TIGO\\Desktop\\Programování\\Projects\\FilesForExtractingInfo\\vzorek_dat.xlsx";
+        String filePath = ".\\vzorek_dat.xlsx";
         File file = new File(filePath);
         FileInputStream fis = new FileInputStream(file);
 
@@ -47,7 +51,7 @@ public class FileRead {
             if (cellb.getCellType() == CellType.NUMERIC){
                 int value = (int) cellb.getNumericCellValue();
                 if (isPrime(value)) {
-                    System.out.println(value);
+                    logger.info(String.valueOf(value));
                 }
             }
 
@@ -55,10 +59,10 @@ public class FileRead {
                 try {
                     int value = Integer.parseInt(cellb.getStringCellValue().trim());
                     if (isPrime(value)) {
-                        System.out.println(value);
+                        logger.info(String.valueOf(value));
                     }
                 } catch (NumberFormatException e) {
-                    System.out.println("Cannot parse to integer: " + cellb.getStringCellValue());
+                    logger.info("Nelze konvertovat na integer: " + cellb.getStringCellValue());
                     continue;
                 }
 
