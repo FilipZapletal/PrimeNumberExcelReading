@@ -14,7 +14,7 @@ mvn exec:java
 
 To use a custom Excel file:
 
-mvn exec:java -Dexec.args="path/to/your-file.xlsx"
+mvn exec:java -Dexec.args="path to your file"
 
 ### Option 2: Using JAR file
 After building, run:
@@ -23,7 +23,7 @@ java -jar target/PrimeNumberFileRead-1.0-SNAPSHOT.jar vzorek_dat.xlsx
 
 Or with custom file:
 
-java -jar target/PrimeNumberFileRead-1.0-SNAPSHOT.jar path/to/your-file.xlsx
+java -jar target/PrimeNumberFileRead-1.0-SNAPSHOT.jar path/to/your/file
 
 ## Running Tests
 
